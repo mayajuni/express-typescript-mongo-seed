@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "gulp server-dev",
-    "build-prod": "gulp buidl-prod",
-    "build-dev": "gulp buidl-dev",
+    "build-prod": "gulp build-prod",
+    "build-dev": "gulp build-dev",
     "test": "gulp build-prod"
   },
   "dependencies": {

@@ -6,7 +6,7 @@ import * as dotenv from 'dotenv';
 import App from './app';
 import { LoggerModule } from './module/logger.module';
 
-export default class AppServer{
+export default class AppServer {
     private port = process.env.PORT || 3000;
     public app: express.Application;
     private server: any;

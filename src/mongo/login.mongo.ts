@@ -6,4 +6,5 @@ const loginSchema = new Schema({
     password: String,
     regDt: {type: Date, defailt: Date.now}
 });
-export const login = model('member', loginSchema);
+
+export default model('member', loginSchema);

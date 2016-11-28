@@ -99,7 +99,7 @@ export namespace LoggerModule {
      * @param res
      * @param next
      */
-    export function saveLogFile(req: any, res: any, next: any) {
+    export const saveLogFile = (req: any, res: any, next: any) => {
         checkDir('server');
 
         const meta: any = settingMeta(req, res);
@@ -119,7 +119,7 @@ export namespace LoggerModule {
         };
 
         next();
-    }
+    };
 
     /**
      * 파일 저장(에러일때)
@@ -129,7 +129,7 @@ export namespace LoggerModule {
      * @param res
      * @param next
      */
-    export function saveErrorLogFile(err: any, req: any, res: any, next: any) {
+    export const saveErrorLogFile = (err: any, req: any, res: any, next: any) => {
         checkDir('error');
 
         if(err.status >= 400) {
@@ -139,5 +139,5 @@ export namespace LoggerModule {
         }
 
         next(err);
-    }
+    };
 }

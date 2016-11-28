@@ -4,10 +4,7 @@
 import * as dotenv from 'dotenv';
 import AppServer from './app.server';
 
-dotenv.config({
-    silent: true,
-    path: '../.env'
-});
+dotenv.config();
 
 const server = new AppServer();
 

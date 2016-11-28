@@ -6,13 +6,16 @@ import * as rename from 'gulp-rename';
 import * as nodemon from 'gulp-nodemon';
 import tslint from 'gulp-tslint';
 
+
 const path: any = {
     src: ['src/**/*.ts', 'src/**/**/*.ts', 'src/**/**/**/*.ts', 'src/**/**/**/**.ts'],
-    buildTs: ['!src/server-dev.ts', '!src/server-prod.ts', 'src/app.ts', 'src/**/**/*.ts', 'src/**/**/**/*.ts', 'src/**/**/**/**.ts'],
+    buildTs: ['src/app.ts', 'src/**/**/*.ts', 'src/**/**/**/*.ts', 'src/**/**/**/**.ts', '!src/server-dev.ts', '!src/server-prod.ts'],
     devTs: 'src/server-dev.ts',
     prodTs: 'src/server-prod.ts',
     watchJs: ['dist/**/*.js', 'src/**/**/*.js', 'dist/**/**/**/*.js', 'dist/**/**/**/**.js']
 };
+
+
 
 const tsProject = ts.createProject('tsconfig.json');
 
@@ -97,19 +100,25 @@ gulp.task('build-prod', (done: any) => {
     );
 });
 
+gulp.task('server-dev', (done: any) => {
+    runSequence(
+        'build-dev',
+        'server',
+        'watch'
+    )
+});
+
 /**
  * 서버 구동
  */
 gulp.task('server', () => {
-    var stream = nodemon({
-        script: 'dist/server.js'
-        , ext: 'js'
+    const stream = nodemon({
+        script: 'dist/server.js',
+        ext: 'js',
+        env: {}
     });
 
     stream
-        .on('restart', function () {
-            console.log('restarted!');
-        })
         .on('crash', function () {
             console.error('Application has crashed!\n');
             stream.emit('restart', 10);  // restart the server in 10 seconds
@@ -120,7 +129,7 @@ gulp.task('server', () => {
  * 소스 변화를 감지한다
  */
 gulp.task('watch', () => {
-    gulp.watch(path.buildTs, ['ts']);
+    gulp.watch(['src/app.ts', 'src/**/**/*.ts', 'src/**/**/**/*.ts', 'src/**/**/**/**.ts', '!src/server-dev.ts', '!src/server-prod.ts'], ['ts']);
 
     gulp.watch(path.devTs, ['tsc-server-dev']);
 

@@ -4,7 +4,7 @@
 import * as express from 'express';
 import * as login from './router/login.router';
 
-export class AppRouter {
+export default class AppRouter {
     app: express.Application;
 
     constructor(app: express.Application) {

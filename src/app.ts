@@ -11,7 +11,7 @@ import * as Session from 'express-session';
 import * as redisStore from 'connect-redis';
 import { LoggerModule } from './module/logger.module';
 import { ErrorModule } from './module/error.module';
-import { AppRouter } from './app.router';
+import AppRouter from './app.router';
 
 
 export default class App {

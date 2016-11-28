@@ -34,8 +34,8 @@ export default class App {
         /* connection Mongo */
         this.connectMongo();
 
-        /*/!* connection Redis Session *!/
-        this.session();*/
+        /* connection Redis Session */
+        this.session();
 
         /* 실서버일때만 적용시킨다. */
         if(this.isProduction) {

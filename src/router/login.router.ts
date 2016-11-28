@@ -30,10 +30,6 @@ router.post('/', loginVO.setParams, wrap(async(req: any, res: any) => {
  * 로그인 정보 주기
  */
 router.get('/', (req: any, res: any) => {
-    req.session = {
-        user: {id: 'test', name: 'test'}
-    };
-
     res.json(req.session.user);
 });
 

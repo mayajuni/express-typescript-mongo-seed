@@ -71,6 +71,7 @@ COMMON_KEY=common_key
  - file말고도 custom하게 변경 처리 가능(db 저장, s3업로드 등)
  - data type은 json
  - src/module/logger.module.ts에서 수정가능
+ - 현재 dev에서는 파일 생성을 안한다.(prod에서만 함)
 
 ## Test 
 추후 진행 예정

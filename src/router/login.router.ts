@@ -21,16 +21,20 @@ loginVO.setParams = (req: any, res: any, next: any) => {
  * 로그인 하기
  */
 router.post('/', loginVO.setParams, wrap(async(req: any, res: any) => {
-    const admin = await LoginService.login(loginVO.get.userId, loginVO.get.password);
-    req.session.admin = admin;
-    res.send(admin);
+    const user = await LoginService.login(loginVO.get.userId, loginVO.get.password);
+    req.session.user = user;
+    res.send(user);
 }));
 
 /**
  * 로그인 정보 주기
  */
 router.get('/', (req: any, res: any) => {
-    res.json(req.session['admin']);
+    req.session = {
+        user: {id: 'test', name: 'test'}
+    };
+
+    res.json(req.session.user);
 });
 
 /**

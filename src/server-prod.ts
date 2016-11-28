@@ -4,7 +4,9 @@
 import * as dotenv from 'dotenv';
 import AppServer from './app.server';
 
-dotenv.config();
+dotenv.config({
+    path: '../.env'
+});
 /* NODE_ENV default가 development이라서 변경 처리 */
 process.env.NODE_ENV = 'production';
 
